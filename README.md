@@ -17,7 +17,6 @@ It enables *instructors* to create and manage courses, and *students* to enroll,
 - Browse and enroll in courses.
 - Watch video lectures.
 - Track course progress.
-- View quiz results (if applicable).
 
 ### 🔒 Authentication & Security
 - *JWT-based authentication*.
