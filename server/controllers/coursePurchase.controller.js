@@ -162,14 +162,16 @@ export const getCourseDetailWithPurchaseStatus = async (req, res) => {
   }
 };
 
-export const getAllPurchasedCourse = async (_, res) => {
+export const getAllPurchasedCourse = async (req, res) => {
   try {
+    const userId = req.id;
     const purchasedCourse = await CoursePurchase.find({
+      userId,
       status: "completed",
     }).populate("courseId");
-    if (!purchasedCourse) {
-      return res.status(404).json({
-        purchasedCourse: [],
+     if (!purchasedCourse || purchasedCourse.length === 0) {
+      return res.status(200).json({
+        purchasedCourse: [], // return empty array, not error
       });
     }
     return res.status(200).json({
