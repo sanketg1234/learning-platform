@@ -2,9 +2,15 @@
 import { Course } from "../models/course.model.js";
 import { Lecture } from "../models/lecture.model.js";
 import {deleteMediaFromCloudinary, deleteVideoFromCloudinary, uploadMedia} from "../utils/cloudinary.js";
-
+import { User } from "../models/user.model.js";
 export const createCourse = async (req,res) => {
     try {
+        const user = await User.findById(req.id);
+        if (!user || user.role !== "Instructor") {
+            return res.status(403).json({
+                message: "Forbidden. Only instructors can create courses."
+            });
+        }
         const {courseTitle, category} = req.body;
         if(!courseTitle || !category) {
             return res.status(400).json({
@@ -120,6 +126,11 @@ export const editCourse = async (req,res) => {
             return res.status(404).json({
                 message:"Course not found!"
             })
+        }
+        if (course.creator.toString() !== req.id) {
+            return res.status(403).json({
+                message: "Forbidden. You are not the creator of this course."
+            });
         }
         let courseThumbnail;
         if(thumbnail){
