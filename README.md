@@ -1,9 +1,9 @@
 # Learning Platform
 
-A full-stack interactive Learning Management System (LMS) built using the MERN stack (MongoDB, Express, React, Node.js). Users can watch video lectures, enroll in courses, take quizzes, and track progress.
+A full-stack interactive Learning Management System (LMS) built using the MERN stack (MongoDB, Express, React, Node.js). Users can watch video lectures, enroll in courses and track progress.
 
 ## 🔧 Tech Stack
-- **Frontend**: React (CRA), Tailwind CSS
+- **Frontend**: React , Tailwind CSS
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB + Mongoose
 - **Authentication**: JWT + bcrypt
